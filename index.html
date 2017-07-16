@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <title>Terminal</title>
+</head>
+<body>
+<br>
+<div class="col-xs-12 col-sm-12 col-lg-12">
+    <div class="panel panel-primary panel-transparent">
+        <div class="panel-heading">
+            <h3 class="panel-title">Terminal</h3>
+            <div class="pull-right">
+                    <span>
+					    <i class="fa fa-window-close"></i>
+					</span>
+            </div>
+        </div>
+        <div>
+            <textarea id="terminal" class=" panel-primary panel-transparent" disabled></textarea>
+        </div>
+        <div class="panel-primary panel-transparent">
+                <div class="input-group">
+                    <input id="console" type="text" class="form-control panel-primary panel-transparent" placeholder="Command"/>
+                    <div class="input-group-btn">
+                        <button id="submit" class="btn" type="submit">&crarr;</button>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+<script src="script/jquery-3.2.1.min.js"></script>
+<script src="script/consoleReader.js"></script>
+</body>
+</html>
