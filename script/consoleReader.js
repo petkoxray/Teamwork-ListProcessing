@@ -31,4 +31,8 @@
     }
 
     input.value = '';
+
+    function print(msg) {
+        terminal.value += msg + "\n";
+    }
 })();
