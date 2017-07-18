@@ -17,22 +17,33 @@
         let commandToken = input.val().split(' ').filter(e => e !== '');
 
         switch (commandToken[0]){
+            case 'append' :
+                print(append());
+                break;
             default:
                 if (initialized) {
                     print("Error: invalid command");
                 }
             }
-    }
+        if (!initialized) {
+            arr = commandToken.slice(0);
+            initialized = true;
+            print(arr.join(' '));
+        }
 
-    if (!initialized) {
-        arr = commandToken.slice(0);
-        initialized = true;
-        terminal.val() += arr.join(' ') + '\n';
-    }
+        input.val('');
 
-    input.val() = '';
+        function print(msg) {
+            let output = terminal.val() + msg + '\n';
+            terminal.val(output);
+        }
 
-    function print(msg) {
-        terminal.val() += msg + "\n";
+        function append() {
+            if (commandToken.length !== 2) {
+                return "Error: invalid command parameters";
+            }
+            arr.push(commandToken[1]);
+            return arr.join(' ');
+        }
     }
 })();
