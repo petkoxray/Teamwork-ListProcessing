@@ -20,6 +20,9 @@
             case 'append' :
                 print(append());
                 break;
+            case 'prepend' :
+                print(prepend());
+                break;
             default:
                 if (initialized) {
                     print("Error: invalid command");
@@ -43,6 +46,14 @@
                 return "Error: invalid command parameters";
             }
             arr.push(commandToken[1]);
+            return arr.join(' ');
+        }
+
+        function prepend() {
+            if (commandToken.length !== 2) {
+                return "Error: invalid command parameters";
+            }
+            arr.unshift(commandToken[1]);
             return arr.join(' ');
         }
     }
