@@ -27,12 +27,12 @@
     if (!initialized) {
         arr = commandToken.slice(0);
         initialized = true;
-        terminal.value += arr.join(' ') + '\n';
+        terminal.val() += arr.join(' ') + '\n';
     }
 
-    input.value = '';
+    input.val() = '';
 
     function print(msg) {
-        terminal.value += msg + "\n";
+        terminal.val() += msg + "\n";
     }
 })();
