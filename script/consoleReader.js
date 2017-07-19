@@ -32,6 +32,9 @@
             case 'end' :
                 print(end());
                 break;
+            case 'reverse' :
+                print(reverse());
+                break;
             default:
                 if (initialized) {
                     print("Error: invalid command");
@@ -84,6 +87,15 @@
             }
 
             return arr.filter(e => e === commandToken[1]).length;
+        }
+
+        function reverse() {
+            if (commandToken.length !== 1) {
+                return "Error: invalid command parameters";
+
+            }
+            arr = arr.reverse();
+            return arr.join(' ');
         }
 
         function end() {
