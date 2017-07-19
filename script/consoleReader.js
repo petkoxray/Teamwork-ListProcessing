@@ -23,6 +23,9 @@
             case 'prepend' :
                 print(prepend());
                 break;
+            case 'delete' :
+                print(deleteElement());
+                break;
             default:
                 if (initialized) {
                     print("Error: invalid command");
@@ -54,6 +57,18 @@
                 return "Error: invalid command parameters";
             }
             arr.unshift(commandToken[1]);
+            return arr.join(' ');
+        }
+
+        function deleteElement() {
+            index = Number(commandToken[1]);
+            if (index < 0 || index > arr.length-1) {
+                return `Error: invalid index ${index}`;
+            }
+            if (commandToken.length !== 2 || !Number.isInteger(index)) {
+                return "Error: invalid command parameter";
+            }
+            arr.splice(index, 1);
             return arr.join(' ');
         }
     }
