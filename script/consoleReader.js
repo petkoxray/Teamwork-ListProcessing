@@ -38,6 +38,9 @@
             case 'sort':
                 print(sort());
                 break;
+            case 'roll':
+                print(roll());
+                break;
             default:
                 if (initialized) {
                     print("Error: invalid command");
@@ -110,8 +113,27 @@
         }
 
         function sort() {
+            if (commandToken.length !== 1) {
+                return "Error: invalid command parameters";
+            }
+
             arr = arr.sort((a, b) => a.localeCompare(b));
             return arr.join(' ');
+        }
+
+        function roll() {
+            if (commandToken.length !== 2 || (commandToken[1] !== 'right'
+            && commandToken[1] !== 'left')) {
+                return "Error: invalid command parameters";
+            }
+
+            if (commandToken[1] === 'left') {
+                arr.push(arr.shift());
+                return arr;
+            }
+
+            arr.unshift(arr.pop());
+            return arr;
         }
     }
 })();
