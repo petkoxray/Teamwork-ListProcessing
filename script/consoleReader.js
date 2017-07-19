@@ -26,6 +26,9 @@
             case 'delete' :
                 print(deleteElement());
                 break;
+            case 'count' :
+                print(count());
+                break;
             case 'end' :
                 print(end());
                 break;
@@ -73,6 +76,14 @@
             }
             arr.splice(index, 1);
             return arr.join(' ');
+        }
+
+        function count() {
+            if (commandToken.length !== 2) {
+                return "Error: invalid command parameter";
+            }
+
+            return arr.filter(e => e === commandToken[1]).length;
         }
 
         function end() {
