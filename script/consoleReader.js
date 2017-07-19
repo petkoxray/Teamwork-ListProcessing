@@ -35,6 +35,9 @@
             case 'reverse' :
                 print(reverse());
                 break;
+            case 'sort':
+                print(sort());
+                break;
             default:
                 if (initialized) {
                     print("Error: invalid command");
@@ -104,6 +107,11 @@
             }
 
             return "Finished";
+        }
+
+        function sort() {
+            arr = arr.sort((a, b) => a.localeCompare(b));
+            return arr.join(' ');
         }
     }
 })();
