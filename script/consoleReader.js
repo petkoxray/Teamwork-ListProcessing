@@ -26,6 +26,9 @@
             case 'delete' :
                 print(deleteElement());
                 break;
+            case 'end' :
+                print(end());
+                break;
             default:
                 if (initialized) {
                     print("Error: invalid command");
@@ -70,6 +73,14 @@
             }
             arr.splice(index, 1);
             return arr.join(' ');
+        }
+
+        function end() {
+            if (commandToken.length !== 1) {
+                return "Error: invalid command parameters";
+            }
+
+            return "Finished";
         }
     }
 })();
