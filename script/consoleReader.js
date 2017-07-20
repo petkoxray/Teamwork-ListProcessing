@@ -129,11 +129,11 @@
 
             if (commandToken[1] === 'left') {
                 arr.push(arr.shift());
-                return arr;
+                return arr.join(' ');
             }
 
             arr.unshift(arr.pop());
-            return arr;
+            return arr.join(' ');
         }
     }
 })();
