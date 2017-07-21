@@ -41,6 +41,9 @@
             case 'roll':
                 print(roll());
                 break;
+            case 'insert' :
+                print(insert());
+                break;
             default:
                 if (initialized) {
                     print("Error: invalid command");
@@ -133,6 +136,21 @@
             }
 
             arr.unshift(arr.pop());
+            return arr.join(' ');
+        }
+
+        function insert() {
+            index = Number(commandToken[1]);
+
+            if (index < 0 || index > arr.length-1) {
+                return `Error: invalid index ${index}`;
+            }
+
+            if (commandToken.length !== 3) {
+                return "Error: invalid command parameter";
+            }
+
+            arr.splice(index, 0, commandToken[2]);
             return arr.join(' ');
         }
     }
