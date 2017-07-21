@@ -1,58 +1,63 @@
 (function () {
     let arr = [];
     let initialized = false;
+    let finished = false;
     let index;
     let terminal = $('#terminal');
     let input = $('#console');
     $('#submit').click(submit);
 
     input.keypress(
-    function(e) {
-        if (e.which === 13) {
-            submit();
-        }
-    });
+        function (e) {
+            if (e.which === 13) {
+                submit();
+            }
+        });
 
     function submit() {
         let commandToken = input.val().split(' ').filter(e => e !== '');
-
-        switch (commandToken[0]){
-            case 'append' :
-                print(append());
-                break;
-            case 'prepend' :
-                print(prepend());
-                break;
-            case 'delete' :
-                print(deleteElement());
-                break;
-            case 'count' :
-                print(count());
-                break;
-            case 'end' :
-                print(end());
-                break;
-            case 'reverse' :
-                print(reverse());
-                break;
-            case 'sort':
-                print(sort());
-                break;
-            case 'roll':
-                print(roll());
-                break;
-            case 'insert' :
-                print(insert());
-                break;
-            default:
-                if (initialized) {
+        if (initialized) {
+            switch (commandToken[0]) {
+                case 'append' :
+                    print(append());
+                    break;
+                case 'prepend' :
+                    print(prepend());
+                    break;
+                case 'delete' :
+                    print(deleteElement());
+                    break;
+                case 'count' :
+                    print(count());
+                    break;
+                case 'end' :
+                    print(end());
+                    break;
+                case 'reverse' :
+                    print(reverse());
+                    break;
+                case 'sort':
+                    print(sort());
+                    break;
+                case 'roll':
+                    print(roll());
+                    break;
+                case 'insert' :
+                    print(insert());
+                    break;
+                default:
                     print("Error: invalid command");
-                }
             }
+        }
         if (!initialized) {
             arr = commandToken.slice(0);
             initialized = true;
+            finished = false;
             print(arr.join(' '));
+        }
+        if (finished) {
+            arr = [];
+            initialized = false;
         }
 
         input.val('');
@@ -80,7 +85,7 @@
 
         function deleteElement() {
             index = Number(commandToken[1]);
-            if (index < 0 || index > arr.length-1) {
+            if (index < 0 || index > arr.length - 1) {
                 return `Error: invalid index ${index}`;
             }
             if (commandToken.length !== 2 || !Number.isInteger(index)) {
@@ -111,7 +116,7 @@
             if (commandToken.length !== 1) {
                 return "Error: invalid command parameters";
             }
-
+            finished = true;
             return "Finished";
         }
 
@@ -126,7 +131,7 @@
 
         function roll() {
             if (commandToken.length !== 2 || (commandToken[1] !== 'right'
-            && commandToken[1] !== 'left')) {
+                    && commandToken[1] !== 'left')) {
                 return "Error: invalid command parameters";
             }
 
@@ -142,7 +147,7 @@
         function insert() {
             index = Number(commandToken[1]);
 
-            if (index < 0 || index > arr.length-1) {
+            if (index < 0 || index > arr.length - 1) {
                 return `Error: invalid index ${index}`;
             }
 
